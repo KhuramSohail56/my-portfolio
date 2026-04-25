@@ -1,5 +1,5 @@
 /* ============================================================
-   KHURRAM SOHAIL PORTFOLIO — MAIN.JS
+   KHURRAM SOHAIL PORTFOLIO — MAIN.JS (FINAL VERSION)
    ============================================================ */
 
 const typedEl  = document.getElementById('typed-text');
@@ -21,20 +21,55 @@ const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section[id]');
 
 function onScroll() {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
+  if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
   let current = '';
   sections.forEach(s => { if (window.scrollY >= s.offsetTop - navbar.offsetHeight - 80) current = s.id; });
   navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
-  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+  const scrollBtn = document.getElementById('scrollTop');
+  if (scrollBtn) scrollBtn.classList.toggle('visible', window.scrollY > 400);
   animateSkillsOnScroll();
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 
+// Form Submission Logic - Direct Redirect to ThankYou Page
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = contactForm.querySelector('.submit-btn');
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        window.location.href = 'thankyou.html';
+      } else {
+        alert('Submission failed. Please try again.');
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+    }).catch(() => {
+      alert('Error connecting to the server.');
+      btn.textContent = originalText;
+      btn.disabled = false;
+    });
+  });
+}
+
+// Mobile Menu
 const hamburger = document.getElementById('hamburger');
 const navList   = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => navList.classList.toggle('open'));
+if (hamburger) {
+  hamburger.addEventListener('click', () => navList.classList.toggle('open'));
+}
 navLinks.forEach(l => l.addEventListener('click', () => navList.classList.remove('open')));
 
+// Skills Animation
 let skillsAnimated = false;
 function animateSkillsOnScroll() {
   if (skillsAnimated) return;
@@ -45,16 +80,7 @@ function animateSkillsOnScroll() {
   }
 }
 
-// Is code ko replace karein (Submit logic ko delete kar dein taake Formspree chale)
-const form = document.getElementById('contact-form');
-// Agar aap sirf button ka text change karna chahte hain bina Formspree ko rokay:
-if (form) {
-  form.addEventListener('submit', () => {
-    const btn = form.querySelector('.submit-btn');
-    btn.textContent = 'Sending...';
-  });
-}
-
+// Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e) {
     const id = this.getAttribute('href');
@@ -64,6 +90,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+// Scroll Reveal
 const revealEls = document.querySelectorAll('.journey-card,.skill-item,.project-card,.cert-card,.about-container,.home-content,.home-img');
 const observer  = new IntersectionObserver(entries => {
   entries.forEach(e => {
