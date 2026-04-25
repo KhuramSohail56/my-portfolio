@@ -1,6 +1,7 @@
 /* ============================================================
    KHURRAM SOHAIL PORTFOLIO — MAIN.JS (FINAL VERSION)
    ============================================================ */
+
 const typedEl  = document.getElementById('typed-text');
 const words    = ['Aspiring Software Engineer','DSA Enthusiast','ML Explorer','C++ & Java Developer','Python Programmer'];
 let wordIndex  = 0, charIndex = 0, isDeleting = false;
