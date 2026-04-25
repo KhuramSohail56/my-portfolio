@@ -403,16 +403,23 @@
   </section>
 
   <!-- ===== CONTACT ===== -->
-  <section class="contact" id="contact">
+ <section class="contact" id="contact">
     <h2 class="section-heading">Contact <span class="highlight">Me!</span></h2>
+    
     <form action="https://formspree.io/f/mgordgvj" method="POST" class="contact-form" id="contact-form">
+      
+      <input type="hidden" name="_next" value="thankyou.html">
+      
       <div class="form-row">
         <input type="text" name="name" placeholder="Full Name" required />
         <input type="email" name="email" placeholder="Email Address" required />
       </div>
       <div class="form-row">
-  <input type="tel" name="phone" placeholder="Whatsapp No" /> <input type="text" name="_subject" placeholder="Email Subject"/> </div>
+        <input type="tel" name="phone" placeholder="Mobile Number" />
+        <input type="text" name="subject" placeholder="Email Subject"  />
+      </div>
       <textarea name="message" placeholder="Your Message" rows="7" required></textarea>
+      
       <button type="submit" class="submit-btn">Submit</button>
     </form>
   </section>
