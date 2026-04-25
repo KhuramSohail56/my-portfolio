@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Khurram Sohail</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        .success-wrapper {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-primary);
+        }
+        .success-card {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 0 30px rgba(20, 243, 243, 0.1);
+        }
+        .success-icon {
+            font-size: 4rem;
+            color: #25D366;
+            margin-bottom: 1.5rem;
+        }
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        }
+        .whatsapp-btn:hover {
+            background: #1da851;
+            transform: translateY(-5px);
+            color: white;
+        }
+        .back-link {
+            display: block;
+            margin-top: 1.5rem;
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="success-wrapper">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1 class="highlight">Message Received!</h1>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                Thank you, Khurram Sohail has received your message. For a faster response, you can reach out directly via WhatsApp.
+            </p>
+
+            <a href="https://wa.me/923313235733?text=Hi%20Khurram,%20I%20visited%20your%20portfolio%20and%20wanted%20to%20connect!" 
+               class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+
+            <a href="index.html" class="back-link">Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>
