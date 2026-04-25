@@ -45,13 +45,13 @@ function animateSkillsOnScroll() {
   }
 }
 
+// Is code ko replace karein (Submit logic ko delete kar dein taake Formspree chale)
 const form = document.getElementById('contact-form');
+// Agar aap sirf button ka text change karna chahte hain bina Formspree ko rokay:
 if (form) {
-  form.addEventListener('submit', e => {
-    e.preventDefault();
+  form.addEventListener('submit', () => {
     const btn = form.querySelector('.submit-btn');
-    btn.textContent = 'Sent! ✓'; btn.style.background = '#00a8a8'; btn.disabled = true;
-    setTimeout(() => { btn.textContent = 'Submit'; btn.style.background = ''; btn.disabled = false; form.reset(); }, 3000);
+    btn.textContent = 'Sending...';
   });
 }
 
