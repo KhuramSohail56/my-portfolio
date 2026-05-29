@@ -106,7 +106,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Scroll Reveal
 const revealEls = document.querySelectorAll('.journey-card,.skill-item,.project-card,.cert-card,.about-container,.home-content,.home-img');
 const observer  = new IntersectionObserver(entries => {
   entries.forEach(e => {
