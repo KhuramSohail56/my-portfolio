@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Khurram Sohail portfolio - Software Engineering student focused on C++, Java, Python, DSA, OOP, Machine Learning, and practical software projects." />
   <title>Khurram Sohail | Portfolio</title>
   <link rel="stylesheet" href="stylesheet.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -22,14 +23,15 @@
       <li><a href="#education"    class="nav-link">Education</a></li>
       <li><a href="#contact"      class="nav-link">Contact</a></li>
     </ul>
-    <div class="hamburger" id="hamburger">
+    <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </nav>
 
   <!-- ===== HOME ===== -->
   <section class="home" id="home">
     <div class="home-content">
+      <p class="availability-pill"><i class="fas fa-code"></i> Software Engineering Student</p>
       <h1>Hi, I'm <span class="highlight">Khurram Sohail</span></h1>
       <h2 class="typing-wrapper">
         <span id="typed-text"></span><span class="cursor">|</span>
@@ -37,6 +39,24 @@
       <p class="home-desc">
         I am a Software Engineering enthusiast dedicated to building clean, high-performance solutions. My expertise lies in bridging the gap between complex logic and user-centric design, with a deep focus on Data Structures, Object-Oriented Programming, and Machine Learning. I don't just write code; I architect systems that solve real-world problems.
       </p>
+      <div class="hero-actions">
+        <a href="#projects" class="primary-btn"><i class="fas fa-layer-group"></i> View Projects</a>
+        <a href="#contact" class="secondary-btn"><i class="fas fa-paper-plane"></i> Contact Me</a>
+      </div>
+      <div class="hero-stats" aria-label="Portfolio highlights">
+        <div class="stat-card">
+          <strong>3+</strong>
+          <span>Core Projects</span>
+        </div>
+        <div class="stat-card">
+          <strong>9</strong>
+          <span>Certificates</span>
+        </div>
+        <div class="stat-card">
+          <strong>5</strong>
+          <span>Key Skills</span>
+        </div>
+      </div>
       <div class="social-icons">
         <a href="https://github.com/KhuramSohail56" target="_blank" class="social-btn" title="GitHub">
           <i class="fab fa-github"></i>
@@ -48,7 +68,7 @@
     </div>
    <div class="home-img">
       <div class="img-box">
-        <img src="updatepro.jpeg" alt="Khurram Sohail Profile Picture" />
+        <img src="khur.jpeg" alt="Khurram Sohail Profile Picture" />
       </div>
     </div>
   </section>
@@ -59,7 +79,7 @@
       <div class="about-avatar">
         <div class="avatar-ring">
           <div class="avatar-inner">
-            <span class="avatar-emoji">💻</span>
+            <span class="avatar-emoji"><i class="fas fa-laptop-code"></i></span>
           </div>
         </div>
         <h3 class="about-title">Software Engineering Student!</h3>
@@ -69,55 +89,96 @@
 
 As a Microsoft Learn Student Ambassador, I strive to stay at the forefront of emerging technologies, constantly refining my skills in C++, Java, and Python to build the next generation of digital tools.
       </p>
+      <div class="about-highlights">
+        <div class="about-highlight">
+          <i class="fas fa-sitemap"></i>
+          <span>DSA & Algorithms</span>
+        </div>
+        <div class="about-highlight">
+          <i class="fas fa-cubes"></i>
+          <span>OOP Architecture</span>
+        </div>
+        <div class="about-highlight">
+          <i class="fas fa-brain"></i>
+          <span>Machine Learning</span>
+        </div>
+        <div class="about-highlight">
+          <i class="fas fa-users"></i>
+          <span>Team Leadership</span>
+        </div>
+      </div>
     </div>
   </section>
   <!-- ===== PROJECTS ===== -->
   <section class="projects" id="projects">
     <h2 class="section-heading">My <span class="highlight">Projects</span></h2>
+    <p class="projects-intro">
+      Practical semester projects focused on clean architecture, fast data access, and user-friendly workflows.
+    </p>
     <div class="projects-grid">
 
       <div class="project-card">
-        <div class="project-header">
+        <div class="project-visual project-visual-java">
           <div class="project-icon"><i class="fas fa-store"></i></div>
-          <div class="project-links">
-            <a href="https://github.com/KhuramSohail56/Grocery-Store-Manager-JavaFX" target="_blank"><i class="fab fa-github"></i></a>
-          </div>
+          <span class="project-status">Featured</span>
         </div>
-        <h3 class="project-title">Grocery Store Manager</h3>
-        <p class="project-sub">JavaFX | OOP | File Handling | CRUD</p>
-        <p class="project-desc">A desktop-based Inventory Management and Billing System developed as a 2nd-semester OOP project at UET Taxila. Features smart billing, real-time stock updates, and persistent file-based storage.</p>
-        <div class="project-tags">
-          <span>Java</span><span>JavaFX</span><span>OOP</span><span>File I/O</span><span>GUI</span>
+        <div class="project-body">
+          <div class="project-header">
+            <div>
+              <p class="project-kicker">Desktop Application</p>
+              <h3 class="project-title">Grocery Store Manager</h3>
+            </div>
+            <a class="project-link" href="https://github.com/KhuramSohail56/Grocery-Store-Manager-JavaFX" target="_blank" aria-label="View Grocery Store Manager on GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <p class="project-sub">JavaFX | OOP | File Handling | CRUD</p>
+          <p class="project-desc">A desktop-based Inventory Management and Billing System developed as a 2nd-semester OOP project at UET Taxila. Features smart billing, real-time stock updates, and persistent file-based storage.</p>
+          <div class="project-tags">
+            <span>Java</span><span>JavaFX</span><span>OOP</span><span>File I/O</span><span>GUI</span>
+          </div>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-header">
+        <div class="project-visual project-visual-dsa">
           <div class="project-icon"><i class="fas fa-boxes"></i></div>
-          <div class="project-links">
-            <a href="https://github.com/KhuramSohail56/Inventory-Track-Pro-DSA" target="_blank"><i class="fab fa-github"></i></a>
-          </div>
+          <span class="project-status">DSA Core</span>
         </div>
-        <h3 class="project-title">Inventory Track Pro</h3>
-        <p class="project-sub">C++ | DSA | Hash Tables | BST | Stacks</p>
-        <p class="project-desc">A high-performance C++ inventory system using core DSA concepts — Hash Tables for O(1) lookups, BST for range searches, Stacks for undo/redo, and Merge/Quick Sort for analytics.</p>
-        <div class="project-tags">
-          <span>C++</span><span>DSA</span><span>BST</span><span>Hash Table</span><span>Sorting</span>
+        <div class="project-body">
+          <div class="project-header">
+            <div>
+              <p class="project-kicker">Performance System</p>
+              <h3 class="project-title">Inventory Track Pro</h3>
+            </div>
+            <a class="project-link" href="https://github.com/KhuramSohail56/Inventory-Track-Pro-DSA" target="_blank" aria-label="View Inventory Track Pro on GitHub"><i class="fab fa-github"></i></a>
+          </div>
+          <p class="project-sub">C++ | DSA | Hash Tables | BST | Stacks</p>
+          <p class="project-desc">A high-performance C++ inventory system using core DSA concepts: Hash Tables for O(1) lookups, BST for range searches, Stacks for undo/redo, and Merge/Quick Sort for analytics.</p>
+          <div class="project-tags">
+            <span>C++</span><span>DSA</span><span>BST</span><span>Hash Table</span><span>Sorting</span>
+          </div>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-header">
+        <div class="project-visual project-visual-cpp">
           <div class="project-icon"><i class="fas fa-cash-register"></i></div>
-          <div class="project-links">
-            <a href="https://github.com/KhuramSohail56/Grocery-Store-Management-System" target="_blank"><i class="fab fa-github"></i></a>
-          </div>
+          <span class="project-status">Console</span>
         </div>
-        <h3 class="project-title">Grocery Store Management System</h3>
-        <p class="project-sub">C++ | Console App | File Handling</p>
-        <p class="project-desc">A C++ console application (1st-semester project) supporting adding, updating, deleting items, displaying inventory, calculating total cost, and saving/loading from files.</p>
-        <div class="project-tags">
-          <span>C++</span><span>File Handling</span><span>CRUD</span><span>Console</span>
+        <div class="project-body">
+          <div class="project-header">
+            <div>
+              <p class="project-kicker">Semester Project</p>
+              <h3 class="project-title">Grocery Store Management System</h3>
+            </div>
+            <a class="project-link" href="https://github.com/KhuramSohail56/Grocery-Store-Management-System" target="_blank" aria-label="View Grocery Store Management System on GitHub"><i class="fab fa-github"></i></a>
+          </div>
+          <p class="project-sub">C++ | Console App | File Handling</p>
+          <p class="project-desc">A C++ console application (1st-semester project) supporting adding, updating, deleting items, displaying inventory, calculating total cost, and saving/loading from files.</p>
+          <div class="project-tags">
+            <span>C++</span><span>File Handling</span><span>CRUD</span><span>Console</span>
+          </div>
         </div>
       </div>
 
@@ -131,7 +192,7 @@ As a Microsoft Learn Student Ambassador, I strive to stay at the forefront of em
     <h2 class="section-heading">My <span class="highlight">Skills</span></h2>
     <div class="skills-grid">
       <div class="skills-col">
-        <h3 class="skills-col-title"><span>💻</span> Coding Skills</h3>
+        <h3 class="skills-col-title"><span><i class="fas fa-code"></i></span> Coding Skills</h3>
         <div class="skill-item">
           <div class="skill-info"><span>C++</span><span>85%</span></div>
           <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
@@ -154,7 +215,7 @@ As a Microsoft Learn Student Ambassador, I strive to stay at the forefront of em
         </div>
       </div>
       <div class="skills-col">
-        <h3 class="skills-col-title"><span>🚀</span> Professional Skills</h3>
+        <h3 class="skills-col-title"><span><i class="fas fa-rocket"></i></span> Professional Skills</h3>
         <div class="skill-item">
           <div class="skill-info"><span>Machine Learning</span><span>70%</span></div>
           <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
@@ -289,8 +350,8 @@ As a Microsoft Learn Student Ambassador, I strive to stay at the forefront of em
       <div class="journey-box">
         <div class="journey-card">
           <div class="card-dot"></div>
-          <div class="card-date">2024 — 2028</div>
-          <h4 class="card-title">BS Software Engineering — UET Taxila</h4>
+          <div class="card-date">2024 - 2028</div>
+          <h4 class="card-title">BS Software Engineering - UET Taxila</h4>
           <p class="card-desc">
             Currently pursuing a Bachelor's degree in Software Engineering at the University of Engineering and Technology, Taxila. 
             Gaining a strong foundation in advanced development methodologies, data structures, and algorithms while actively contributing 
@@ -305,7 +366,7 @@ As a Microsoft Learn Student Ambassador, I strive to stay at the forefront of em
       <div class="journey-box">
         <div class="journey-card">
           <div class="card-dot"></div>
-          <div class="card-date">2025 — Present</div>
+          <div class="card-date">2025 - Present</div>
           <h4 class="card-title">Python & C++ Development Specialist</h4>
           <p class="card-desc">
             Architecting efficient solutions for complex logic problems using C++ and Python, focusing on modular code design 
@@ -321,6 +382,9 @@ As a Microsoft Learn Student Ambassador, I strive to stay at the forefront of em
   <!-- ===== CONTACT ===== -->
 <section class="contact" id="contact">
     <h2 class="section-heading">Contact <span class="highlight">Me!</span></h2>
+    <p class="contact-intro">
+      Have a project idea, collaboration, or internship opportunity? Send a message and I will get back to you.
+    </p>
     
     <form action="https://formspree.io/f/mgordgvj" method="POST" class="contact-form" id="contact-form">
       <div class="form-row">
@@ -328,10 +392,10 @@ As a Microsoft Learn Student Ambassador, I strive to stay at the forefront of em
         <input type="email" name="Email" placeholder="Email Address" required />
       </div>
       <div class="form-row">
-  <input type="tel" name="phone" placeholder="Whatsapp No" /> <input type="text" name="_subject" placeholder="Email Subject"/> </div>
+  <input type="tel" name="phone" placeholder="WhatsApp No" /> <input type="text" name="_subject" placeholder="Email Subject"/> </div>
       <textarea name="Message" placeholder="Your Message" rows="7" required></textarea>
       
-      <button type="submit" class="submit-btn">Submit</button>
+      <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
     </form>
   </section>
   <!-- ===== SCROLL TO TOP ===== -->
