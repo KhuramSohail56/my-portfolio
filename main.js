@@ -7,6 +7,7 @@ const words    = ['Aspiring Software Engineer','DSA Enthusiast','ML Explorer','C
 let wordIndex  = 0, charIndex = 0, isDeleting = false;
 
 function type() {
+  if (!typedEl) return;
   const w = words[wordIndex];
   typedEl.textContent = isDeleting ? w.slice(0, charIndex - 1) : w.slice(0, charIndex + 1);
   isDeleting ? charIndex-- : charIndex++;
@@ -23,7 +24,8 @@ const sections = document.querySelectorAll('section[id]');
 function onScroll() {
   if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
   let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - navbar.offsetHeight - 80) current = s.id; });
+  const navHeight = navbar ? navbar.offsetHeight : 0;
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - navHeight - 80) current = s.id; });
   navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
   const scrollBtn = document.getElementById('scrollTop');
   if (scrollBtn) scrollBtn.classList.toggle('visible', window.scrollY > 400);
@@ -37,8 +39,8 @@ if (contactForm) {
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = contactForm.querySelector('.submit-btn');
-    const originalText = btn.textContent;
-    btn.textContent = 'Sending...';
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     btn.disabled = true;
 
     fetch(this.action, {
@@ -50,12 +52,12 @@ if (contactForm) {
         window.location.href = 'thankyou.html';
       } else {
         alert('Submission failed. Please try again.');
-        btn.textContent = originalText;
+        btn.innerHTML = originalText;
         btn.disabled = false;
       }
     }).catch(() => {
       alert('Error connecting to the server.');
-      btn.textContent = originalText;
+      btn.innerHTML = originalText;
       btn.disabled = false;
     });
   });
@@ -64,10 +66,20 @@ if (contactForm) {
 // Mobile Menu
 const hamburger = document.getElementById('hamburger');
 const navList   = document.querySelector('.nav-links');
-if (hamburger) {
-  hamburger.addEventListener('click', () => navList.classList.toggle('open'));
+if (hamburger && navList) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = navList.classList.toggle('open');
+    hamburger.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
 }
-navLinks.forEach(l => l.addEventListener('click', () => navList.classList.remove('open')));
+navLinks.forEach(l => l.addEventListener('click', () => {
+  if (navList) navList.classList.remove('open');
+  if (hamburger) {
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+}));
 
 // Skills Animation
 let skillsAnimated = false;
@@ -86,7 +98,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const id = this.getAttribute('href');
     if (id === '#') return;
     const t = document.querySelector(id);
-    if (t) { e.preventDefault(); window.scrollTo({ top: t.offsetTop - navbar.offsetHeight, behavior: 'smooth' }); }
+    if (t) {
+      e.preventDefault();
+      const navHeight = navbar ? navbar.offsetHeight : 0;
+      window.scrollTo({ top: t.offsetTop - navHeight, behavior: 'smooth' });
+    }
   });
 });
 
@@ -94,7 +110,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 const revealEls = document.querySelectorAll('.journey-card,.skill-item,.project-card,.cert-card,.about-container,.home-content,.home-img');
 const observer  = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; observer.unobserve(e.target); }
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      setTimeout(() => { e.target.style.transform = ''; }, 650);
+      observer.unobserve(e.target);
+    }
   });
 }, { threshold: 0.1 });
 revealEls.forEach(el => {
