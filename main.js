@@ -1,5 +1,5 @@
 /* ============================================================
-   KHURRAM SOHAIL PORTFOLIO — MAIN.JS (FINAL VERSION)
+   KHURRAM SOHAIL PORTFOLIO — MAIN.JS (FINAL VERSION WITH AI)
    ============================================================ */
 
 const typedEl  = document.getElementById('typed-text');
@@ -33,7 +33,7 @@ function onScroll() {
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 
-// Form Submission Logic - Direct Redirect to ThankYou Page
+// Form Submission Logic
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', function(e) {
@@ -106,6 +106,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+// Scroll Reveal
 const revealEls = document.querySelectorAll('.journey-card,.skill-item,.project-card,.cert-card,.about-container,.home-content,.home-img');
 const observer  = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -124,3 +125,97 @@ revealEls.forEach(el => {
 });
 
 onScroll();
+
+/* ============================================================
+   AI CHATBOT LOGIC
+   ============================================================ */
+const aiChatToggle    = document.getElementById('aiChatToggle');
+const aiChatClose     = document.getElementById('aiChatClose');
+const aiChatContainer = document.getElementById('aiChatContainer');
+const aiChatForm      = document.getElementById('aiChatForm');
+const aiChatInput     = document.getElementById('aiChatInput');
+const aiChatMessages  = document.getElementById('aiChatMessages');
+const suggestBtns     = document.querySelectorAll('.ai-suggest-btn');
+
+if (aiChatToggle && aiChatContainer) {
+  aiChatToggle.addEventListener('click', () => {
+    aiChatContainer.classList.toggle('open');
+  });
+}
+
+if (aiChatClose && aiChatContainer) {
+  aiChatClose.addEventListener('click', () => {
+    aiChatContainer.classList.remove('open');
+  });
+}
+
+const aiKnowledgeBase = [
+  {
+    keywords: ['project', 'projects', 'work', 'grocery', 'inventory'],
+    response: "Khurram has built 3 key projects: <br>1. <strong>Grocery Store Manager</strong> (JavaFX, OOP, smart billing).<br>2. <strong>Inventory Track Pro</strong> (C++ High-performance application using Stacks, BST, Hash Tables).<br>3. <strong>Grocery Store Management System</strong> (C++ Console application with full File Handling CRUD features)."
+  },
+  {
+    keywords: ['skill', 'skills', 'languages', 'code', 'coding', 'python', 'cpp', 'c++'],
+    response: "Khurram's technical expertise includes: <strong>C++ (85%)</strong>, <strong>HTML/CSS (90%)</strong>, <strong>OOP (85%)</strong>, <strong>Python (80%)</strong>, <strong>Java (75%)</strong>, Data Structures (DSA), and Machine Learning."
+  },
+  {
+    keywords: ['education', 'university', 'uet', 'taxila', 'degree', 'semester'],
+    response: "Khurram is currently a Software Engineering student at <strong>UET Taxila (Session 2024 - 2028)</strong>. He is currently in his 4th semester expanding his knowledge graph."
+  },
+  {
+    keywords: ['certificate', 'certificates', 'certified', 'coursera'],
+    response: "Khurram holds 12 professional credentials including <strong>Stanford's Machine Learning</strong> (Coursera), Google's Crash Course on Python, IBM CyberSecurity, and multiple tech badges from SoloLearn."
+  },
+  {
+    keywords: ['contact', 'email', 'phone', 'whatsapp', 'hire', 'linkedin'],
+    response: "You can reach out to Khurram via the contact form on this website or directly via email. Connect with him on his <a href='https://www.linkedin.com/in/khurram-sohail-34046832a/' target='_blank' style='color:#21e6e6; text-decoration:underline;'>LinkedIn profile</a>!"
+  },
+  {
+    keywords: ['about', 'who are you', 'khurram', 'sohail'],
+    response: "Khurram Sohail is a Software Engineering student, Microsoft Learn Student Ambassador (MLSA), and active contributor at SoftDesk, GDSC, and YPDC."
+  }
+];
+
+function getBotResponse(input) {
+  const cleanInput = input.toLowerCase().trim();
+  for (const item of aiKnowledgeBase) {
+    if (item.keywords.some(keyword => cleanInput.includes(keyword))) {
+      return item.response;
+    }
+  }
+  return "Interesting question! I am customized to answer about Khurram's projects, skills, certifications, and academic background. Try asking about his 'Projects' or 'Skills'!";
+}
+
+function appendMessage(text, sender) {
+  const msgDiv = document.createElement('div');
+  msgDiv.classList.add('ai-message', sender);
+  msgDiv.innerHTML = text;
+  aiChatMessages.appendChild(msgDiv);
+  aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+}
+
+if (aiChatForm) {
+  aiChatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = aiChatInput.value;
+    if (!query.trim()) return;
+    
+    appendMessage(query, 'user');
+    aiChatInput.value = '';
+    
+    setTimeout(() => {
+      const reply = getBotResponse(query);
+      appendMessage(reply, 'bot');
+    }, 450);
+  });
+}
+
+suggestBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const text = btn.textContent;
+    appendMessage(text, 'user');
+    setTimeout(() => {
+      appendMessage(getBotResponse(text), 'bot');
+    }, 400);
+  });
+});
